@@ -87,7 +87,9 @@ public class Player extends EntityBase {
 
         /////////////////MOVE LEFT///////////////
     	}else if(handler.getKeyManager().keyJustPressed(KeyEvent.VK_A) && !moving && facing.equals("LEFT")){
-            moving=true;
+    		if(player.getX()>0) {
+    		moving=true;
+    		}
         }else if(handler.getKeyManager().keyJustPressed(KeyEvent.VK_A) && !moving&& !facing.equals("LEFT")){
         	if(player.getX()>0) {
         	if(facing.equals("RIGHT")) {
@@ -114,7 +116,9 @@ public class Player extends EntityBase {
         /////////////////MOVE RIGHT///////////////
         
         }else if(handler.getKeyManager().keyJustPressed(KeyEvent.VK_D) && !moving && facing.equals("RIGHT")){
-            moving=true;
+        	if(player.getX()<450) {
+        	moving=true;
+        	}
         }else if(handler.getKeyManager().keyJustPressed(KeyEvent.VK_D) && !moving&& !facing.equals("RIGHT")){
         	if(player.getX()<450) {
         	if(facing.equals("LEFT")) {
