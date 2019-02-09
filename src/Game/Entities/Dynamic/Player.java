@@ -32,14 +32,15 @@ public class Player extends EntityBase {
 
     public void tick(){
 
+    	
         if(moving) {
             animateMovement();
         }
-
+        
         if(!moving){
-            move();
-        }
-
+        	move();
+        	}
+    	
     }
 
     private void reGrid() {
@@ -82,21 +83,25 @@ public class Player extends EntityBase {
                 setY(getY()+64);
             }
             facing = "UP";
-        }
+        
 
         /////////////////MOVE LEFT///////////////
-        else if(handler.getKeyManager().keyJustPressed(KeyEvent.VK_A) && !moving && facing.equals("LEFT")){
+    	}else if(handler.getKeyManager().keyJustPressed(KeyEvent.VK_A) && !moving && facing.equals("LEFT")){
             moving=true;
         }else if(handler.getKeyManager().keyJustPressed(KeyEvent.VK_A) && !moving&& !facing.equals("LEFT")){
-            if(facing.equals("RIGHT")) {
+        	if(player.getX()>0) {
+        	if(facing.equals("RIGHT")) {
                 setX(getX()-64);
             }
             reGrid();
             facing = "LEFT";
         }
+       
+        }
 
+		
         /////////////////MOVE DOWN///////////////
-        else if(handler.getKeyManager().keyJustPressed(KeyEvent.VK_S) && !moving && facing.equals("DOWN")){
+    	else if(handler.getKeyManager().keyJustPressed(KeyEvent.VK_S) && !moving && facing.equals("DOWN")){
             moving=true;
         }else if(handler.getKeyManager().keyJustPressed(KeyEvent.VK_S) && !moving && !facing.equals("DOWN")){
             reGrid();
@@ -104,13 +109,15 @@ public class Player extends EntityBase {
                 setX(getX()-64);
             }
             facing = "DOWN";
-        }
+        
 
         /////////////////MOVE RIGHT///////////////
-        else if(handler.getKeyManager().keyJustPressed(KeyEvent.VK_D) && !moving && facing.equals("RIGHT")){
+        
+        }else if(handler.getKeyManager().keyJustPressed(KeyEvent.VK_D) && !moving && facing.equals("RIGHT")){
             moving=true;
         }else if(handler.getKeyManager().keyJustPressed(KeyEvent.VK_D) && !moving&& !facing.equals("RIGHT")){
-            if(facing.equals("LEFT")) {
+        	if(player.getX()<450) {
+        	if(facing.equals("LEFT")) {
                 setX(getX()+64);
             }
             if(facing.equals("UP")) {
@@ -128,6 +135,7 @@ public class Player extends EntityBase {
             }
             facing = "RIGHT";
         }
+       }
     }
 
     private void animateMovement(){
@@ -228,5 +236,5 @@ public class Player extends EntityBase {
     public Rectangle getPlayerCollision() {
         return player;
     }
-
+ 
 }
