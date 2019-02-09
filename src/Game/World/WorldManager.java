@@ -151,6 +151,7 @@ public class WorldManager {
 
 		player.tick();
 		//make player move the same as the areas
+		
 		player.setY(player.getY()+movementSpeed); 
 
 		object2.tick();
@@ -252,7 +253,7 @@ public class WorldManager {
 		Random rand = new Random();
 		int randInt = 64 * rand.nextInt(9);
 		SpawnedHazards.add(new Tree(handler, randInt, yPosition));
-
+		
 
 	}
 
