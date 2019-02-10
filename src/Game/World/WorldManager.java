@@ -76,11 +76,12 @@ public class WorldManager {
 		 *  To understand this, go down to randomArea(int yPosition) 
 		 */
 		for(int i=0; i<gridHeight+2; i++) {
-			SpawnedAreas.add(randomArea((-2+i)*64));
+			SpawnedAreas.add(PlayerSpawner((-2+i)*64));
 		}
 
+		
 		player.setX((gridWidth/2)*64);
-		player.setY((gridHeight-3)*64);
+		player.setY((gridHeight-10)*64);
 
 		// Not used atm.
 		grid = new ID[gridWidth][gridHeight];
@@ -224,15 +225,23 @@ public class WorldManager {
 	 * Given a yPosition, this method will return a random Area out of the Available ones.)
 	 * It is also in charge of spawning hazards at a specific condition.
 	 */
+	private BaseArea PlayerSpawner(int yPosition) {
+		BaseArea PlayerSpawner;
+		PlayerSpawner = new GrassArea(handler, yPosition);
+		SpawnHazardTree(yPosition);
+		return PlayerSpawner;
+	}
 	private BaseArea randomArea(int yPosition) {
 		Random rand = new Random();
-
+		
 		// From the AreasAvailable, get me any random one.
 		BaseArea randomArea = AreasAvailables.get(rand.nextInt(AreasAvailables.size())); 
 
 		if(randomArea instanceof GrassArea) {
 			randomArea = new GrassArea(handler, yPosition);
 			SpawnHazardTree(yPosition);
+			
+			
 		}
 		else if(randomArea instanceof WaterArea) {
 			randomArea = new WaterArea(handler, yPosition);
