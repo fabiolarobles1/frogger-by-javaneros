@@ -44,7 +44,7 @@ public class Images {
     public static BufferedImage lilly;
     public static BufferedImage log;
     public static BufferedImage grass;
-
+    public static BufferedImage tree;
     public static BufferedImage[] object;
 
 
@@ -58,6 +58,7 @@ public class Images {
         Turtle = new BufferedImage[20];
         Water = new BufferedImage[3];
         object = new BufferedImage[6];
+        
 
         try {
             playerSheet = new SpriteSheet(ImageIO.read(getClass().getResourceAsStream("/Sheets/gameSprites.png")));
@@ -118,7 +119,7 @@ public class Images {
             Water[1]= WaterSheet.crop(32,0,32,32);
             Water[2]= WaterSheet.crop(64,0,32,32);
 
-
+            
             lilly = playerSheet.crop(6,170,61,55);
             log = playerSheet.crop(387,259,184,57);
             
@@ -134,7 +135,7 @@ public class Images {
             
             player = ImageIO.read(getClass().getResourceAsStream("/Sheets/froggy.png"));
             grass = ImageIO.read(getClass().getResourceAsStream("/Sheets/grass.jpg"));
-
+            tree = ImageIO.read(getClass().getResourceAsStream("/Sheets/tree.png"));
             grassArea = ImageIO.read(getClass().getResourceAsStream("/Sheets/grassArea.png"));
             waterArea = ImageIO.read(getClass().getResourceAsStream("/Sheets/waterArea.png"));
             emptyArea = ImageIO.read(getClass().getResourceAsStream("/Sheets/sand.jpg"));
