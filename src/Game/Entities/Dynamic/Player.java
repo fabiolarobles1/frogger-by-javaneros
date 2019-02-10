@@ -63,9 +63,12 @@ public class Player extends EntityBase {
 
         /////////////////MOVE UP///////////////
         if(handler.getKeyManager().keyJustPressed(KeyEvent.VK_W) && !moving && facing.equals("UP")){
-            moving=true;
+        	if(player.getY()>10) {
+            	moving=true;
+            	}
         }else if(handler.getKeyManager().keyJustPressed(KeyEvent.VK_W) && !moving && !facing.equals("UP")){
-            if(facing.equals("DOWN")) {
+        	if(player.getY()>10) {
+        	if(facing.equals("DOWN")) {
                 if(this.getX() % 64 >= 64 / 2 ) {
 
                     this.setX(this.getX() + (64 - this.getX() % 64));
@@ -83,7 +86,7 @@ public class Player extends EntityBase {
                 setY(getY()+64);
             }
             facing = "UP";
-        
+        	}
 
         /////////////////MOVE LEFT///////////////
     	}else if(handler.getKeyManager().keyJustPressed(KeyEvent.VK_A) && !moving && facing.equals("LEFT")){
@@ -104,14 +107,17 @@ public class Player extends EntityBase {
 		
         /////////////////MOVE DOWN///////////////
     	else if(handler.getKeyManager().keyJustPressed(KeyEvent.VK_S) && !moving && facing.equals("DOWN")){
-            moving=true;
+    		if(player.getY()<700) {
+            	moving=true;
+            	}
         }else if(handler.getKeyManager().keyJustPressed(KeyEvent.VK_S) && !moving && !facing.equals("DOWN")){
-            reGrid();
+        	if(player.getY()<700) {
+        	reGrid();
             if(facing.equals("RIGHT")){
                 setX(getX()-64);
             }
             facing = "DOWN";
-        
+        	}
 
         /////////////////MOVE RIGHT///////////////
         
