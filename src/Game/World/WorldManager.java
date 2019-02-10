@@ -177,16 +177,17 @@ public class WorldManager {
 					player.setX(player.getX() + 1);
 				}
 			}
-			if (SpawnedHazards.get(i) instanceof Tree)	{
+			if (SpawnedHazards.get(i) instanceof Tree)	{ 
 				if (SpawnedHazards.get(i).GetCollision() != null
 						&& player.getPlayerCollision().intersects(SpawnedHazards.get(i).GetCollision())) {
-					//if (SpawnedHazards.get(i).getY() == (player.getY()-movementSpeed) ){
+
+
+					//if (player.getY()==(SpawnedHazards.get(i).getY() + movementSpeed)) 
 						player.setY(player.getY()+(10*movementSpeed));
-						
-						
-				//	}
+					
 				}
 			}
+
 			// if hazard has passed the screen height, then remove this hazard.
 			if (SpawnedHazards.get(i).getY() > handler.getHeight()) {
 				SpawnedHazards.remove(i);
