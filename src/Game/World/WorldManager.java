@@ -181,10 +181,18 @@ public class WorldManager {
 				if (SpawnedHazards.get(i).GetCollision() != null
 						&& player.getPlayerCollision().intersects(SpawnedHazards.get(i).GetCollision())) {
 
-
-					//if (player.getY()==(SpawnedHazards.get(i).getY() + movementSpeed)) 
-						player.setY(player.getY()+(10*movementSpeed));
-					
+					if (player.facing.equals("UP")) {
+						player.setY(player.getY()+(15*movementSpeed));
+					}
+					else if (player.facing.equals("DOWN")) {
+						player.setY(player.getY()-(15*movementSpeed));
+					}
+					else if (player.facing.equals("LEFT")) {
+						player.setX(player.getX()+1*15*movementSpeed);
+					}
+					else if (player.facing.equals("RIGHT")) {
+						player.setX(player.getX()-1*15*movementSpeed);
+					}
 				}
 			}
 
