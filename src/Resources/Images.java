@@ -135,7 +135,7 @@ public class Images {
             
             player = ImageIO.read(getClass().getResourceAsStream("/Sheets/froggy.png"));
             grass = ImageIO.read(getClass().getResourceAsStream("/Sheets/grass.jpg"));
-            tree = ImageIO.read(getClass().getResourceAsStream("/Sheets/tree.png"));
+            tree = ImageIO.read(getClass().getResourceAsStream("/Sheets/tree2.png"));
             grassArea = ImageIO.read(getClass().getResourceAsStream("/Sheets/grassArea.png"));
             waterArea = ImageIO.read(getClass().getResourceAsStream("/Sheets/waterArea.png"));
             emptyArea = ImageIO.read(getClass().getResourceAsStream("/Sheets/sand.jpg"));
