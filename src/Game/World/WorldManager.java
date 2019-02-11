@@ -150,6 +150,7 @@ public class WorldManager {
 
 		HazardMovement();
 		HazardBarrier();
+		
 
 		player.tick();
 		//make player move the same as the areas
@@ -198,22 +199,30 @@ public class WorldManager {
 						&& player.getPlayerCollision().intersects(SpawnedHazards.get(i).GetCollision())) {
 
 					if (player.facing.equals("UP")) {
-						player.setY(player.getY()+(15*movementSpeed));
+						//player.setY(player.getY()+(15*movementSpeed));
+						player.setY(player.getY()+32);
 					}
 					else if (player.facing.equals("DOWN")) {
-						player.setY(player.getY()-(15*movementSpeed));
+						//player.setY(player.getY()-(15*movementSpeed));
+						player.setY(player.getY()-32);
 					}
 					else if (player.facing.equals("LEFT")) {
-						player.setX(player.getX()+1*15*movementSpeed);
+						//player.setX(player.getX()+1*15*movementSpeed);
+						player.setX(player.getX()+32);
 					}
 					else if (player.facing.equals("RIGHT")) {
-						player.setX(player.getX()-1*15*movementSpeed);
+						//player.setX(player.getX()-1*15*movementSpeed);
+						player.setX(player.getX()-32);
 					}
 				}
 			}
 			
 		}
 	}
+	
+
+	
+	
 	public void render(Graphics g){
 
 		for(BaseArea area : SpawnedAreas) {
@@ -240,7 +249,7 @@ public class WorldManager {
 		SpawnHazardTree(yPosition);
 		return PlayerSpawner;
 	}
-	private BaseArea randomArea(int yPosition) {
+	public BaseArea randomArea(int yPosition) {
 		Random rand = new Random();
 		
 		// From the AreasAvailable, get me any random one.
@@ -255,6 +264,8 @@ public class WorldManager {
 		else if(randomArea instanceof WaterArea) {
 			randomArea = new WaterArea(handler, yPosition);
 			SpawnHazard(yPosition);
+			
+			
 		}
 		else {
 			randomArea = new EmptyArea(handler, yPosition);
@@ -278,6 +289,7 @@ public class WorldManager {
 		else if (choice >=5){
 			randInt = 64 * rand.nextInt(9);
 			SpawnedHazards.add(new LillyPad(handler, randInt, yPosition));
+			
 		}
 		else {
 			randInt = 64 * rand.nextInt(3);
