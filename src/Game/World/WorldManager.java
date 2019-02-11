@@ -149,6 +149,7 @@ public class WorldManager {
 		}
 
 		HazardMovement();
+		HazardBarrier();
 
 		player.tick();
 		//make player move the same as the areas
@@ -178,6 +179,20 @@ public class WorldManager {
 					player.setX(player.getX() + 1);
 				}
 			}
+			
+
+			// if hazard has passed the screen height, then remove this hazard.
+			if (SpawnedHazards.get(i).getY() > handler.getHeight()) {
+				SpawnedHazards.remove(i);
+			}
+
+
+		}
+	}
+	
+	private void HazardBarrier() {
+
+		for (int i = 0; i < SpawnedHazards.size(); i++) {
 			if (SpawnedHazards.get(i) instanceof Tree)	{ 
 				if (SpawnedHazards.get(i).GetCollision() != null
 						&& player.getPlayerCollision().intersects(SpawnedHazards.get(i).GetCollision())) {
@@ -196,13 +211,7 @@ public class WorldManager {
 					}
 				}
 			}
-
-			// if hazard has passed the screen height, then remove this hazard.
-			if (SpawnedHazards.get(i).getY() > handler.getHeight()) {
-				SpawnedHazards.remove(i);
-			}
-
-
+			
 		}
 	}
 	public void render(Graphics g){
