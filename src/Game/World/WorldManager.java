@@ -279,21 +279,28 @@ public class WorldManager {
 	private void SpawnHazard(int yPosition) {
 		Random rand = new Random();
 		int randInt;
-		int choice = rand.nextInt(7);
+		int choice = rand.nextInt(12);
 		// Chooses between Log or Lillypad
 
 		if (choice <=2) {
 			randInt = 64 * rand.nextInt(4);
 			SpawnedHazards.add(new Log(handler, randInt, yPosition));
 		}
-		else if (choice >=5 ) {
+		else if (choice >=6 ) {
+			randInt = 64 * rand.nextInt(9);
+			SpawnedHazards.add(new LillyPad(handler, randInt, yPosition));
+			if(choice>=8) {
 				randInt = 64 * rand.nextInt(9);
 				SpawnedHazards.add(new LillyPad(handler, randInt, yPosition));
-			if(choice>7) {
+				if(choice>=10) {
 					randInt = 64 * rand.nextInt(9);
 					SpawnedHazards.add(new LillyPad(handler, randInt, yPosition));
+					if(choice>=11) {
+						randInt = 64 * rand.nextInt(9);
+						SpawnedHazards.add(new LillyPad(handler, randInt, yPosition));
+					}
+				}
 			}
-			
 		}
 		else {
 			randInt = 64 * rand.nextInt(3);
