@@ -247,7 +247,6 @@ public class WorldManager {
 	private BaseArea PlayerSpawner(int yPosition) {
 		BaseArea PlayerSpawner;
 		PlayerSpawner = new GrassArea(handler, yPosition);
-		SpawnHazardTree(yPosition);
 		return PlayerSpawner;
 	}
 	private BaseArea randomArea(int yPosition) {
@@ -315,5 +314,6 @@ public class WorldManager {
 
 
 	}
+	
 
 }
