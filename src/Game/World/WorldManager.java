@@ -190,7 +190,7 @@ public class WorldManager {
 
 		}
 	}
-	
+
 	private void HazardBarrier() {
 
 		for (int i = 0; i < SpawnedHazards.size(); i++) {
@@ -216,10 +216,10 @@ public class WorldManager {
 					}
 				}
 			}
-			
+
 		}
 	}
-	
+
 
 	
 	
@@ -249,7 +249,7 @@ public class WorldManager {
 		SpawnHazardTree(yPosition);
 		return PlayerSpawner;
 	}
-	public BaseArea randomArea(int yPosition) {
+	private BaseArea randomArea(int yPosition) {
 		Random rand = new Random();
 		
 		// From the AreasAvailable, get me any random one.
