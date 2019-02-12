@@ -200,19 +200,19 @@ public class WorldManager {
 
 					if (player.facing.equals("UP")) {
 						//player.setY(player.getY()+(15*movementSpeed));
-						player.setY(player.getY()+32);
+						player.setY(player.getY()+16);
 					}
 					else if (player.facing.equals("DOWN")) {
 						//player.setY(player.getY()-(15*movementSpeed));
-						player.setY(player.getY()-32);
+						player.setY(player.getY()-16);
 					}
 					else if (player.facing.equals("LEFT")) {
 						//player.setX(player.getX()+1*15*movementSpeed);
-						player.setX(player.getX()+32);
+						player.setX(player.getX()+16);
 					}
 					else if (player.facing.equals("RIGHT")) {
 						//player.setX(player.getX()-1*15*movementSpeed);
-						player.setX(player.getX()-32);
+						player.setX(player.getX()-16);
 					}
 				}
 			}
@@ -279,23 +279,23 @@ public class WorldManager {
 	private void SpawnHazard(int yPosition) {
 		Random rand = new Random();
 		int randInt;
-		int choice = rand.nextInt(12);
+		int choice = rand.nextInt(15);
 		// Chooses between Log or Lillypad
 
-		if (choice <=2) {
+		if (choice <=4) {
 			randInt = 64 * rand.nextInt(4);
 			SpawnedHazards.add(new Log(handler, randInt, yPosition));
 		}
-		else if (choice >=6 ) {
+		else if (choice >=7 ) {
 			randInt = 64 * rand.nextInt(9);
 			SpawnedHazards.add(new LillyPad(handler, randInt, yPosition));
-			if(choice>=8) {
+			if(choice>=10) {
 				randInt = 64 * rand.nextInt(9);
 				SpawnedHazards.add(new LillyPad(handler, randInt, yPosition));
-				if(choice>=10) {
+				if(choice>=12) {
 					randInt = 64 * rand.nextInt(9);
 					SpawnedHazards.add(new LillyPad(handler, randInt, yPosition));
-					if(choice>=11) {
+					if(choice>=14) {
 						randInt = 64 * rand.nextInt(9);
 						SpawnedHazards.add(new LillyPad(handler, randInt, yPosition));
 					}
