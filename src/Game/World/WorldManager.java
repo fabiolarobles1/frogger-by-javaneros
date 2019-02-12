@@ -79,7 +79,7 @@ public class WorldManager {
 			SpawnedAreas.add(PlayerSpawner((-2+i)*64));
 		}
 
-		
+
 		player.setX((gridWidth/2)*64);
 		player.setY((gridHeight-10)*64);
 
@@ -150,11 +150,11 @@ public class WorldManager {
 
 		HazardMovement();
 		HazardBarrier();
-		
+
 
 		player.tick();
 		//make player move the same as the areas
-		
+
 		player.setY(player.getY()+movementSpeed); 
 
 		object2.tick();
@@ -180,7 +180,8 @@ public class WorldManager {
 					player.setX(player.getX() + 1);
 				}
 			}
-			
+
+
 
 			// if hazard has passed the screen height, then remove this hazard.
 			if (SpawnedHazards.get(i).getY() > handler.getHeight()) {
@@ -221,8 +222,8 @@ public class WorldManager {
 	}
 
 
-	
-	
+
+
 	public void render(Graphics g){
 
 		for(BaseArea area : SpawnedAreas) {
@@ -251,21 +252,21 @@ public class WorldManager {
 	}
 	private BaseArea randomArea(int yPosition) {
 		Random rand = new Random();
-		
+
 		// From the AreasAvailable, get me any random one.
 		BaseArea randomArea = AreasAvailables.get(rand.nextInt(AreasAvailables.size())); 
 
 		if(randomArea instanceof GrassArea) {
 			randomArea = new GrassArea(handler, yPosition);
 			SpawnHazardTree(yPosition);
-			
-			
+
+
 		}
 		else if(randomArea instanceof WaterArea) {
 			randomArea = new WaterArea(handler, yPosition);
 			SpawnHazard(yPosition);
-			
-			
+
+
 		}
 		else {
 			randomArea = new EmptyArea(handler, yPosition);
@@ -279,23 +280,23 @@ public class WorldManager {
 	private void SpawnHazard(int yPosition) {
 		Random rand = new Random();
 		int randInt;
-		int choice = rand.nextInt(15);
+		int choice = rand.nextInt(18);
 		// Chooses between Log or Lillypad
 
-		if (choice <=4) {
+		if (choice <=5) {
 			randInt = 64 * rand.nextInt(4);
 			SpawnedHazards.add(new Log(handler, randInt, yPosition));
 		}
-		else if (choice >=9 ) {
+		else if (choice >11 ) {
 			randInt = 64 * rand.nextInt(9);
 			SpawnedHazards.add(new LillyPad(handler, randInt, yPosition));
-			if(choice>=10) {
+			if(choice>=13) {
 				randInt = 64 * rand.nextInt(9);
 				SpawnedHazards.add(new LillyPad(handler, randInt, yPosition));
-				if(choice>=12) {
+				if(choice>=15) {
 					randInt = 64 * rand.nextInt(9);
 					SpawnedHazards.add(new LillyPad(handler, randInt, yPosition));
-					if(choice>=14) {
+					if(choice>=17) {
 						randInt = 64 * rand.nextInt(9);
 						SpawnedHazards.add(new LillyPad(handler, randInt, yPosition));
 					}
@@ -311,7 +312,7 @@ public class WorldManager {
 		Random rand = new Random();
 		int randInt = 64 * rand.nextInt(9);
 		SpawnedHazards.add(new Tree(handler, randInt, yPosition));
-		
+
 
 	}
 
