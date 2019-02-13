@@ -252,8 +252,8 @@ public class WorldManager {
 	public int oneortheother = 0;
 	private BaseArea randomArea(int yPosition) {
 		Random rand = new Random();
-		
-		
+
+
 		// From the AreasAvailable, get me any random one.
 		BaseArea randomArea = AreasAvailables.get(rand.nextInt(AreasAvailables.size())); 
 
@@ -265,7 +265,7 @@ public class WorldManager {
 		}
 		else if(randomArea instanceof WaterArea) {
 			randomArea = new WaterArea(handler, yPosition);
-			
+
 			if (oneortheother%2==0) {
 				SpawnHazard(yPosition);
 				oneortheother++;
@@ -273,8 +273,8 @@ public class WorldManager {
 				SpawnHazardNoLylli(yPosition);
 				oneortheother++;
 			}
-			
-		  
+
+
 		}
 		else {
 			randomArea = new EmptyArea(handler, yPosition);
@@ -289,9 +289,9 @@ public class WorldManager {
 		Random rand = new Random();
 		int randInt;
 		int choice = rand.nextInt(10);
-	
+
 		// Chooses between Log or Lillypad
-	
+
 		if (choice <=5) {
 			randInt = 64 * rand.nextInt(4);
 			SpawnedHazards.add(new Log(handler, randInt, yPosition));
@@ -304,26 +304,27 @@ public class WorldManager {
 		Random rand = new Random();
 		int randInt;
 		int choice = rand.nextInt(18);
-	
+
 		// Chooses between Log or Lillypad
-	
+
 		if (choice <=5) {
 			randInt = 64 * rand.nextInt(4);
 			SpawnedHazards.add(new Log(handler, randInt, yPosition));
 		}
-		
+
 		else if (choice >11 ) {
 			randInt = 64 * rand.nextInt(9);
 			SpawnedHazards.add(new LillyPad(handler, randInt, yPosition));
-			if(choice>=13) {
+			if (choice>11) {
 				randInt = 64 * rand.nextInt(9);
 				SpawnedHazards.add(new LillyPad(handler, randInt, yPosition));
-				if(choice>=15) {
+				if(choice>=13) {
 					randInt = 64 * rand.nextInt(9);
 					SpawnedHazards.add(new LillyPad(handler, randInt, yPosition));
-					if(choice>=17) {
+					if(choice>=15) {
 						randInt = 64 * rand.nextInt(9);
 						SpawnedHazards.add(new LillyPad(handler, randInt, yPosition));
+
 					}
 				}
 			}
@@ -341,6 +342,6 @@ public class WorldManager {
 
 
 	}
-	
+
 
 }
