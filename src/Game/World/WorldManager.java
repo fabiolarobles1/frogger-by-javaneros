@@ -192,6 +192,8 @@ public class WorldManager {
 		}
 	}
 
+	//This method will make the tree impenetrable for the player
+	
 	private void HazardBarrier() {
 
 		for (int i = 0; i < SpawnedHazards.size(); i++) {
@@ -200,19 +202,15 @@ public class WorldManager {
 						&& player.getPlayerCollision().intersects(SpawnedHazards.get(i).GetCollision())) {
 
 					if (player.facing.equals("UP")) {
-						//player.setY(player.getY()+(15*movementSpeed));
 						player.setY(player.getY()+16);
 					}
 					else if (player.facing.equals("DOWN")) {
-						//player.setY(player.getY()-(15*movementSpeed));
 						player.setY(player.getY()-16);
 					}
 					else if (player.facing.equals("LEFT")) {
-						//player.setX(player.getX()+1*15*movementSpeed);
 						player.setX(player.getX()+16);
 					}
 					else if (player.facing.equals("RIGHT")) {
-						//player.setX(player.getX()-1*15*movementSpeed);
 						player.setX(player.getX()-16);
 					}
 				}
@@ -244,11 +242,13 @@ public class WorldManager {
 	 * Given a yPosition, this method will return a random Area out of the Available ones.)
 	 * It is also in charge of spawning hazards at a specific condition.
 	 */
-	private BaseArea PlayerSpawner(int yPosition) {
+	private BaseArea PlayerSpawner(int yPosition) {  //This method spawns player on grass area
 		BaseArea PlayerSpawner;
 		PlayerSpawner = new GrassArea(handler, yPosition);
 		return PlayerSpawner;
 	}
+	
+	//This method will avoid two  consecutive Y levels with lilly pads
 	public int oneortheother = 0;
 	private BaseArea randomArea(int yPosition) {
 		Random rand = new Random();
@@ -270,7 +270,7 @@ public class WorldManager {
 				SpawnHazard(yPosition);
 				oneortheother++;
 			}else {
-				SpawnHazardNoLylli(yPosition);
+				SpawnHazardNoLilly(yPosition);
 				oneortheother++;
 			}
 
@@ -285,14 +285,14 @@ public class WorldManager {
 	/*
 	 * Given a yPositionm this method will add a new hazard to the SpawnedHazards ArrayList
 	 */
-	private void SpawnHazardNoLylli(int yPosition) {
+	private void SpawnHazardNoLilly(int yPosition) {
 		Random rand = new Random();
 		int randInt;
 		int choice = rand.nextInt(10);
 
-		// Chooses between Log or Lillypad
+		// Chooses between Log or Turtle
 
-		if (choice <=5) {
+		if (choice <=4) {
 			randInt = 64 * rand.nextInt(4);
 			SpawnedHazards.add(new Log(handler, randInt, yPosition));
 		}else {
