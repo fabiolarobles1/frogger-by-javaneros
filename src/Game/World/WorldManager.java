@@ -249,9 +249,11 @@ public class WorldManager {
 		PlayerSpawner = new GrassArea(handler, yPosition);
 		return PlayerSpawner;
 	}
+	public int oneortheother = 0;
 	private BaseArea randomArea(int yPosition) {
 		Random rand = new Random();
-
+		
+		
 		// From the AreasAvailable, get me any random one.
 		BaseArea randomArea = AreasAvailables.get(rand.nextInt(AreasAvailables.size())); 
 
@@ -263,9 +265,16 @@ public class WorldManager {
 		}
 		else if(randomArea instanceof WaterArea) {
 			randomArea = new WaterArea(handler, yPosition);
-			SpawnHazard(yPosition);
-
-
+			
+			if (oneortheother%2==0) {
+				SpawnHazard(yPosition);
+				oneortheother++;
+			}else {
+				SpawnHazardNoLylli(yPosition);
+				oneortheother++;
+			}
+			
+		  
 		}
 		else {
 			randomArea = new EmptyArea(handler, yPosition);
@@ -276,16 +285,33 @@ public class WorldManager {
 	/*
 	 * Given a yPositionm this method will add a new hazard to the SpawnedHazards ArrayList
 	 */
+	private void SpawnHazardNoLylli(int yPosition) {
+		Random rand = new Random();
+		int randInt;
+		int choice = rand.nextInt(10);
+	
+		// Chooses between Log or Lillypad
+	
+		if (choice <=5) {
+			randInt = 64 * rand.nextInt(4);
+			SpawnedHazards.add(new Log(handler, randInt, yPosition));
+		}else {
+			randInt = 64 * rand.nextInt(3);
+			SpawnedHazards.add(new Turtle(handler, randInt, yPosition));
+		}
+	}
 	private void SpawnHazard(int yPosition) {
 		Random rand = new Random();
 		int randInt;
 		int choice = rand.nextInt(18);
+	
 		// Chooses between Log or Lillypad
-
+	
 		if (choice <=5) {
 			randInt = 64 * rand.nextInt(4);
 			SpawnedHazards.add(new Log(handler, randInt, yPosition));
 		}
+		
 		else if (choice >11 ) {
 			randInt = 64 * rand.nextInt(9);
 			SpawnedHazards.add(new LillyPad(handler, randInt, yPosition));
@@ -306,6 +332,7 @@ public class WorldManager {
 			randInt = 64 * rand.nextInt(3);
 			SpawnedHazards.add(new Turtle(handler, randInt, yPosition));
 		}
+
 	}
 	private void SpawnHazardTree(int yPosition) {
 		Random rand = new Random();
