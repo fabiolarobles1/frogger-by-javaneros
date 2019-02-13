@@ -193,7 +193,7 @@ public class WorldManager {
 	}
 
 	//This method will make the tree impenetrable for the player
-	
+
 	private void HazardBarrier() {
 
 		for (int i = 0; i < SpawnedHazards.size(); i++) {
@@ -247,7 +247,7 @@ public class WorldManager {
 		PlayerSpawner = new GrassArea(handler, yPosition);
 		return PlayerSpawner;
 	}
-	
+
 	//This method will avoid two  consecutive Y levels with lilly pads
 	public int oneortheother = 0;
 	private BaseArea randomArea(int yPosition) {

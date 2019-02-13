@@ -7,25 +7,25 @@ import Main.Handler;
 import Resources.Images;
 
 public class Tree extends StaticBase {
-	
+
 	private Rectangle tree;
-	
+
 	public Tree(Handler handler, int xPosition, int yPosition) {
 		super(handler);
 		// Sets original position to be this one.
-        this.setY(yPosition);
-        this.setX(xPosition);
+		this.setY(yPosition);
+		this.setX(xPosition);
 	}
 
 	@Override
 	public void render(Graphics g) {
 		g.drawImage(Images.tree, this.getX(), this.getY(), 60, 60,null );
-    	tree = new Rectangle(this.getX(), this.getY()+5, 64, 55);
+		tree = new Rectangle(this.getX(), this.getY()+5, 64, 55);
 
 	}
-    @Override
-    public Rectangle GetCollision() {
-    	
-    	return tree;
-    }
+	@Override
+	public Rectangle GetCollision() {
+
+		return tree;
+	}
 }
