@@ -248,7 +248,7 @@ public class WorldManager {
 		return PlayerSpawner;
 	}
 
-	//This method will avoid two  consecutive Y levels with lilly pads
+	//This variable will avoid two  consecutive Y levels with lilly pads
 	public int oneortheother = 0;
 	private BaseArea randomArea(int yPosition) {
 		Random rand = new Random();
