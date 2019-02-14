@@ -63,10 +63,12 @@ public class Player extends EntityBase {
 
 		/////////////////MOVE UP///////////////
 		if(handler.getKeyManager().keyJustPressed(KeyEvent.VK_W) && !moving && facing.equals("UP")){
+			//When the player get close to the top side prevent the player from using this action 
 			if(player.getY()>10) {
 				moving=true;
 			}
 		}else if(handler.getKeyManager().keyJustPressed(KeyEvent.VK_W) && !moving && !facing.equals("UP")){
+			//When the player get close to the top side prevent the player from using this action 
 			if(player.getY()>10) {
 				if(facing.equals("DOWN")) {
 					if(this.getX() % 64 >= 64 / 2 ) {
@@ -90,10 +92,12 @@ public class Player extends EntityBase {
 
 			/////////////////MOVE LEFT///////////////
 		}else if(handler.getKeyManager().keyJustPressed(KeyEvent.VK_A) && !moving && facing.equals("LEFT")){
+			//When the player get close to the left side prevent the player from using this action 
 			if(player.getX()>0) {
 				moving=true;
 			}
 		}else if(handler.getKeyManager().keyJustPressed(KeyEvent.VK_A) && !moving&& !facing.equals("LEFT")){
+			//When the player get close to the left side prevent the player from using this action 
 			if(player.getX()>0) {
 				if(facing.equals("RIGHT")) {
 					setX(getX()-64);
@@ -107,10 +111,12 @@ public class Player extends EntityBase {
 
 		/////////////////MOVE DOWN///////////////
 		else if(handler.getKeyManager().keyJustPressed(KeyEvent.VK_S) && !moving && facing.equals("DOWN")){
+			//When the player get close to the bottom side prevent the player from using this action 
 			if(player.getY()<700) {
 				moving=true;
 			}
 		}else if(handler.getKeyManager().keyJustPressed(KeyEvent.VK_S) && !moving && !facing.equals("DOWN")){
+			//When the player get close to the bottom side prevent the player from using this action 
 			if(player.getY()<700) {
 				reGrid();
 				if(facing.equals("RIGHT")){
@@ -122,10 +128,12 @@ public class Player extends EntityBase {
 			/////////////////MOVE RIGHT///////////////
 
 		}else if(handler.getKeyManager().keyJustPressed(KeyEvent.VK_D) && !moving && facing.equals("RIGHT")){
+			//When the player get close to the right side prevent the player from using this action 
 			if(player.getX()<450) {
 				moving=true;
 			}
 		}else if(handler.getKeyManager().keyJustPressed(KeyEvent.VK_D) && !moving&& !facing.equals("RIGHT")){
+			//When the player get close to the right side prevent the player from using this action 
 			if(player.getX()<450) {
 				if(facing.equals("LEFT")) {
 					setX(getX()+64);

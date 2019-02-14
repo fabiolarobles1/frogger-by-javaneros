@@ -313,7 +313,7 @@ public class WorldManager {
 		int randInt;
 		int choice = rand.nextInt(18);
 
-		// Chooses between Log or Lillypad
+		// Chooses between Log , Lillypad or Turtle
 
 		if (choice <=5) {
 			randInt = 64 * rand.nextInt(4);
