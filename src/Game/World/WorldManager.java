@@ -202,16 +202,16 @@ public class WorldManager {
 						&& player.getPlayerCollision().intersects(SpawnedHazards.get(i).GetCollision())) {
 
 					if (player.facing.equals("UP")) {
-						player.setY(player.getY()+16);
+						player.setY(player.getY()+10);
 					}
 					else if (player.facing.equals("DOWN")) {
-						player.setY(player.getY()-16);
+						player.setY(player.getY()-10);
 					}
 					else if (player.facing.equals("LEFT")) {
-						player.setX(player.getX()+16);
+						player.setX(player.getX()+10);
 					}
 					else if (player.facing.equals("RIGHT")) {
-						player.setX(player.getX()-16);
+						player.setX(player.getX()-10);
 					}
 				}
 			}
@@ -258,10 +258,18 @@ public class WorldManager {
 		BaseArea randomArea = AreasAvailables.get(rand.nextInt(AreasAvailables.size())); 
 
 		if(randomArea instanceof GrassArea) {
+			Random randomNum = new Random();
+			int chooser = randomNum.nextInt(6);
 			randomArea = new GrassArea(handler, yPosition);
 			SpawnHazardTree(yPosition);
-
-
+			if (chooser>=2) {
+				randomArea = new GrassArea(handler, yPosition);
+				SpawnHazardTree(yPosition);
+				if (chooser>=4) {
+					randomArea = new GrassArea(handler, yPosition);
+					SpawnHazardTree(yPosition);
+				}
+			}
 		}
 		else if(randomArea instanceof WaterArea) {
 			randomArea = new WaterArea(handler, yPosition);
