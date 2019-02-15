@@ -68,7 +68,7 @@ public class WorldManager {
 
 		gridWidth = handler.getWidth()/64;
 		gridHeight = handler.getHeight()/64;
-		movementSpeed = 1;
+		movementSpeed = 5;
 		// movementSpeed = 20; I dare you.
 
 		/* 
@@ -169,8 +169,19 @@ public class WorldManager {
 			SpawnedHazards.get(i).setY(SpawnedHazards.get(i).getY() + movementSpeed);
 
 			// Moves Log or Turtle to the right
-			if (SpawnedHazards.get(i) instanceof Log || SpawnedHazards.get(i) instanceof Turtle) {
+			if (SpawnedHazards.get(i) instanceof Log) {
 				SpawnedHazards.get(i).setX(SpawnedHazards.get(i).getX() + 1);
+
+				// Verifies the hazards Rectangles aren't null and
+				// If the player Rectangle intersects with the Log or Turtle Rectangle, then
+				// move player to the right.
+				if (SpawnedHazards.get(i).GetCollision() != null
+						&& player.getPlayerCollision().intersects(SpawnedHazards.get(i).GetCollision())) {
+					player.setX(player.getX() + 1);
+				}
+			}
+			if (SpawnedHazards.get(i) instanceof Turtle) {
+				SpawnedHazards.get(i).setX(SpawnedHazards.get(i).getX() -1);
 
 				// Verifies the hazards Rectangles aren't null and
 				// If the player Rectangle intersects with the Log or Turtle Rectangle, then
@@ -307,7 +318,7 @@ public class WorldManager {
 				//randInt = 64 * rand.nextInt(4);
 				SpawnedHazards.add(new Log(handler, randInt-130, yPosition));
 				if (choice <=2) {
-				//	randInt = 64 * rand.nextInt(4);
+					//	randInt = 64 * rand.nextInt(4);
 					SpawnedHazards.add(new Log(handler, randInt-260, yPosition));
 					if (choice <=1) {
 						//randInt = 64 * rand.nextInt(4);
@@ -317,8 +328,8 @@ public class WorldManager {
 			}
 
 		}else {
-			randInt = 64 * rand.nextInt(3);
-			SpawnedHazards.add(new Turtle(handler, randInt, yPosition));
+			//randInt = 64 * rand.nextInt(3);
+			SpawnedHazards.add(new Turtle(handler, 576, yPosition));
 		}
 	}
 	private void SpawnHazard(int yPosition) {
@@ -338,7 +349,7 @@ public class WorldManager {
 					//randInt = 64 * rand.nextInt(4);
 					SpawnedHazards.add(new Log(handler, randInt-260, yPosition));
 					if (choice <=2) {
-				//		randInt = 64 * rand.nextInt(4);
+						//		randInt = 64 * rand.nextInt(4);
 						SpawnedHazards.add(new Log(handler, randInt-390, yPosition));
 					}
 				}
@@ -363,8 +374,8 @@ public class WorldManager {
 			}
 		}
 		else {
-			randInt = 64 * rand.nextInt(3);
-			SpawnedHazards.add(new Turtle(handler, randInt, yPosition));
+			//randInt = 64 * rand.nextInt(3);
+			SpawnedHazards.add(new Turtle(handler, 576, yPosition));
 		}
 
 	}
