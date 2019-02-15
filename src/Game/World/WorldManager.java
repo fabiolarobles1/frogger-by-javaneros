@@ -303,6 +303,19 @@ public class WorldManager {
 		if (choice <=4) {
 			randInt = 64 * rand.nextInt(4);
 			SpawnedHazards.add(new Log(handler, randInt, yPosition));
+			if (choice <=3) {
+				//randInt = 64 * rand.nextInt(4);
+				SpawnedHazards.add(new Log(handler, randInt-130, yPosition));
+				if (choice <=2) {
+				//	randInt = 64 * rand.nextInt(4);
+					SpawnedHazards.add(new Log(handler, randInt-260, yPosition));
+					if (choice <=1) {
+						//randInt = 64 * rand.nextInt(4);
+						SpawnedHazards.add(new Log(handler, randInt-390, yPosition));
+					}
+				}
+			}
+
 		}else {
 			randInt = 64 * rand.nextInt(3);
 			SpawnedHazards.add(new Turtle(handler, randInt, yPosition));
@@ -318,6 +331,18 @@ public class WorldManager {
 		if (choice <=5) {
 			randInt = 64 * rand.nextInt(4);
 			SpawnedHazards.add(new Log(handler, randInt, yPosition));
+			if (choice <=4) {
+				//randInt = 64 * rand.nextInt(4);
+				SpawnedHazards.add(new Log(handler, randInt-130, yPosition));
+				if (choice <=3) {
+					//randInt = 64 * rand.nextInt(4);
+					SpawnedHazards.add(new Log(handler, randInt-260, yPosition));
+					if (choice <=2) {
+				//		randInt = 64 * rand.nextInt(4);
+						SpawnedHazards.add(new Log(handler, randInt-390, yPosition));
+					}
+				}
+			}
 		}
 
 		else if (choice >11 ) {
