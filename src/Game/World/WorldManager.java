@@ -188,7 +188,7 @@ public class WorldManager {
 				// move player to the right.
 				if (SpawnedHazards.get(i).GetCollision() != null
 						&& player.getPlayerCollision().intersects(SpawnedHazards.get(i).GetCollision())) {
-					player.setX(player.getX() + 1);
+					player.setX(player.getX() -1);
 				}
 			}
 
@@ -307,7 +307,7 @@ public class WorldManager {
 	private void SpawnHazardNoLilly(int yPosition) {
 		Random rand = new Random();
 		int randInt;
-		int choice = rand.nextInt(10);
+		int choice = rand.nextInt(11);
 
 		// Chooses between Log or Turtle
 
@@ -328,10 +328,20 @@ public class WorldManager {
 			}
 
 		}else {
-			//randInt = 64 * rand.nextInt(3);
-			SpawnedHazards.add(new Turtle(handler, 576, yPosition));
+			SpawnedHazards.add(new Turtle(handler, 570, yPosition));
+			if(choice>=6) {
+				SpawnedHazards.add(new Turtle(handler, 570-80, yPosition));
+				if(choice>=9) {
+					SpawnedHazards.add(new Turtle(handler, 570-160, yPosition));
+					if(choice>=10) {
+						SpawnedHazards.add(new Turtle(handler, 570-240, yPosition));
+
+					}
+				}
+			}
 		}
 	}
+
 	private void SpawnHazard(int yPosition) {
 		Random rand = new Random();
 		int randInt;
@@ -374,8 +384,18 @@ public class WorldManager {
 			}
 		}
 		else {
-			//randInt = 64 * rand.nextInt(3);
-			SpawnedHazards.add(new Turtle(handler, 576, yPosition));
+
+			SpawnedHazards.add(new Turtle(handler, 570, yPosition));
+			if(choice>=6) {
+				SpawnedHazards.add(new Turtle(handler, 570-80, yPosition));
+				if(choice>=8) {
+					SpawnedHazards.add(new Turtle(handler, 570-160, yPosition));
+					if(choice>=10) {
+						SpawnedHazards.add(new Turtle(handler, 570-240, yPosition));
+
+					}
+				}
+			}
 		}
 
 	}
