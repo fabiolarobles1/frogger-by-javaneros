@@ -79,7 +79,6 @@ public class WorldManager {
 			SpawnedAreas.add(PlayerSpawner((-2+i)*64));
 		}
 
-
 		player.setX((gridWidth/2)*64);
 		player.setY((gridHeight-10)*64);
 
@@ -91,6 +90,7 @@ public class WorldManager {
 			}
 		}
 	}
+
 
 	public void tick() {
 
@@ -121,7 +121,6 @@ public class WorldManager {
 				this.object2.setOnScreen(true);	
 				this.reset = true;
 			}
-
 		}
 
 		for (BaseArea area : SpawnedAreas) {
@@ -191,20 +190,15 @@ public class WorldManager {
 					player.setX(player.getX() -1);
 				}
 			}
-
-
-
 			// if hazard has passed the screen height, then remove this hazard.
 			if (SpawnedHazards.get(i).getY() > handler.getHeight()) {
 				SpawnedHazards.remove(i);
 			}
-
-
 		}
 	}
 
-	//This method will make the tree impenetrable for the player
 
+	//This method will make the tree impenetrable for the player
 	private void HazardBarrier() {
 
 		for (int i = 0; i < SpawnedHazards.size(); i++) {
@@ -238,16 +232,14 @@ public class WorldManager {
 		for(BaseArea area : SpawnedAreas) {
 			area.render(g);
 		}
-
 		for (StaticBase hazards : SpawnedHazards) {
 			hazards.render(g);
-
 		}
-
 		player.render(g);       
 		this.object2.render(g);      
-
 	}
+
+
 
 	/*
 	 * Given a yPosition, this method will return a random Area out of the Available ones.)
@@ -261,10 +253,11 @@ public class WorldManager {
 
 	//This variable will avoid two  consecutive Y levels with lilly pads
 	public int oneortheother = 0;
+
+
 	private BaseArea randomArea(int yPosition) {
+
 		Random rand = new Random();
-
-
 		// From the AreasAvailable, get me any random one.
 		BaseArea randomArea = AreasAvailables.get(rand.nextInt(AreasAvailables.size())); 
 
@@ -280,9 +273,8 @@ public class WorldManager {
 					randomArea = new GrassArea(handler, yPosition);
 					SpawnHazardTree(yPosition);
 				}
-			}
-		}
-		else if(randomArea instanceof WaterArea) {
+			}		
+		}else if(randomArea instanceof WaterArea) {
 			randomArea = new WaterArea(handler, yPosition);
 
 			if (oneortheother%2==0) {
@@ -291,15 +283,13 @@ public class WorldManager {
 			}else {
 				SpawnHazardNoLilly(yPosition);
 				oneortheother++;
-			}
-
-
-		}
-		else {
+			}		
+		}else {
 			randomArea = new EmptyArea(handler, yPosition);
 		}
 		return randomArea;
 	}
+
 
 	/*
 	 * Given a yPositionm this method will add a new hazard to the SpawnedHazards ArrayList
@@ -326,7 +316,6 @@ public class WorldManager {
 					}
 				}
 			}
-
 		}else {
 			SpawnedHazards.add(new Turtle(handler, 570, yPosition));
 			if(choice>=6) {
@@ -335,12 +324,13 @@ public class WorldManager {
 					SpawnedHazards.add(new Turtle(handler, 570-160, yPosition));
 					if(choice>=10) {
 						SpawnedHazards.add(new Turtle(handler, 570-240, yPosition));
-
 					}
 				}
 			}
 		}
 	}
+
+
 
 	private void SpawnHazard(int yPosition) {
 		Random rand = new Random();
@@ -364,9 +354,7 @@ public class WorldManager {
 					}
 				}
 			}
-		}
-
-		else if (choice >11 ) {
+		}else if (choice >11 ) {
 			randInt = 64 * rand.nextInt(9);
 			SpawnedHazards.add(new LillyPad(handler, randInt, yPosition));
 			if (choice>11) {
@@ -378,13 +366,10 @@ public class WorldManager {
 					if(choice>=15) {
 						randInt = 64 * rand.nextInt(9);
 						SpawnedHazards.add(new LillyPad(handler, randInt, yPosition));
-
 					}
 				}
-			}
-		}
-		else {
-
+			}	
+		}else {
 			SpawnedHazards.add(new Turtle(handler, 570, yPosition));
 			if(choice>=6) {
 				SpawnedHazards.add(new Turtle(handler, 570-80, yPosition));
@@ -392,20 +377,16 @@ public class WorldManager {
 					SpawnedHazards.add(new Turtle(handler, 570-160, yPosition));
 					if(choice>=10) {
 						SpawnedHazards.add(new Turtle(handler, 570-240, yPosition));
-
 					}
 				}
 			}
 		}
-
 	}
+
+
 	private void SpawnHazardTree(int yPosition) {
 		Random rand = new Random();
 		int randInt = 64 * rand.nextInt(9);
 		SpawnedHazards.add(new Tree(handler, randInt, yPosition));
-
-
 	}
-
-
 }
