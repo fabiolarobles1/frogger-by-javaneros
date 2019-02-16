@@ -149,7 +149,7 @@ public class WorldManager {
 
 		HazardMovement();
 		HazardBarrier();
-
+		LoopHazards();
 
 		player.tick();
 		//make player move the same as the areas
@@ -197,6 +197,20 @@ public class WorldManager {
 		}
 	}
 
+	//This method loops the turtles and logs across screen 
+	private void LoopHazards() {
+		for (int i = 0; i < SpawnedHazards.size(); i++) {
+			if(SpawnedHazards.get(i) instanceof Log) {
+				if(SpawnedHazards.get(i).getX()==576){
+					SpawnedHazards.get(i).setX(-120);
+				}
+			}else if(SpawnedHazards.get(i) instanceof Turtle) {
+				if(SpawnedHazards.get(i).getX()==-75){
+					SpawnedHazards.get(i).setX(590);
+				}	
+			}
+		}
+	}
 
 	//This method will make the tree impenetrable for the player
 	private void HazardBarrier() {
@@ -305,13 +319,10 @@ public class WorldManager {
 			randInt = 64 * rand.nextInt(4);
 			SpawnedHazards.add(new Log(handler, randInt, yPosition));
 			if (choice <=3) {
-				//randInt = 64 * rand.nextInt(4);
 				SpawnedHazards.add(new Log(handler, randInt-130, yPosition));
-				if (choice <=2) {
-					//	randInt = 64 * rand.nextInt(4);
+				if (choice <=2) {	
 					SpawnedHazards.add(new Log(handler, randInt-260, yPosition));
-					if (choice <=1) {
-						//randInt = 64 * rand.nextInt(4);
+					if (choice <=1) {		
 						SpawnedHazards.add(new Log(handler, randInt-390, yPosition));
 					}
 				}
