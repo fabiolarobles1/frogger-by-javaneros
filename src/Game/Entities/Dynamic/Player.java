@@ -16,7 +16,7 @@ public class Player extends EntityBase {
 
 
 	private Rectangle player;
-	public String facing = "UP";
+	private String facing = "UP";
 	private Boolean moving = false;
 	private int moveCoolDown=0;
 
@@ -253,6 +253,10 @@ public class Player extends EntityBase {
 
 	public Rectangle getPlayerCollision() {
 		return player;
+	}
+
+	public String getFacing() {
+		return facing;
 	}
 
 }
