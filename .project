@@ -14,4 +14,11 @@
 	<natures>
 		<nature>org.eclipse.jdt.core.javanature</nature>
 	</natures>
+	<linkedResources>
+		<link>
+			<name>res/Sheets/gameoverfrogger.png</name>
+			<type>1</type>
+			<location>C:/Users/Jean C Jimenez/Desktop/Art/gameoverfrogger.png</location>
+		</link>
+	</linkedResources>
 </projectDescription>

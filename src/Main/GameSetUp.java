@@ -4,6 +4,7 @@ import Display.DisplayScreen;
 import Game.GameStates.GameState;
 import Game.GameStates.MenuState;
 import Game.GameStates.PauseState;
+import Game.GameStates.GameOverState;
 import Game.GameStates.State;
 import Input.KeyManager;
 import Input.MouseManager;
@@ -44,7 +45,7 @@ public class GameSetUp implements Runnable {
 	public State gameState;
 	public State menuState;
 	public State pauseState;
-
+    public State gameoverState;
 	//Res.music
 	public MusicHandler musicHandler;
 
@@ -78,7 +79,7 @@ public class GameSetUp implements Runnable {
 		gameState = new GameState(handler);
 		menuState = new MenuState(handler);
 		pauseState = new PauseState(handler);
-
+		gameoverState = new GameOverState(handler);
 		State.setState(menuState);
 
 		musicHandler.set_changeMusic("res/music/Undertale OST 100 - Megalovania.wav");

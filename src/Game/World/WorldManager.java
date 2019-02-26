@@ -37,6 +37,8 @@ public class WorldManager {
 
 	private Player player;									// How do we find the frog coordinates? How do we find the Collisions? This bad boy.
 
+
+
 	UIManager object = new UIManager(handler);
 	UI.UIManager.Vector object2 = object.new Vector();
 

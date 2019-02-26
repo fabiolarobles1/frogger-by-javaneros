@@ -1,6 +1,7 @@
 package Game.GameStates;
 
 import Game.Entities.EntityManager;
+import Game.Entities.Dynamic.Player;
 import Game.World.WorldManager;
 import Main.Handler;
 import java.awt.*;
@@ -16,23 +17,27 @@ import com.sun.glass.events.KeyEvent;
  * The WorldManager Class is constructed.
  */
 public class GameState extends State {
-
-
+	
+	private Player player;
     public GameState(Handler handler){
         super(handler);
         handler.setEntityManager(new EntityManager(handler));
         handler.setWorldManager(new WorldManager(handler));
-
+        
     }
-
 
     @Override
     public void tick() {
+    	player = new Player(handler);
         handler.getWorld().tick();
         if(handler.getKeyManager().keyJustPressed(KeyEvent.VK_ESCAPE)) {
         	State.setState(handler.getGame().pauseState);
         }
-
+        if(player.getY()>100) {
+        	State.setState(handler.getGame().gameoverState);
+        	
+        }
+        System.out.println(player.getY());
     }
 
     @Override

@@ -16,6 +16,8 @@ public class Player extends EntityBase {
 
 
 	private Rectangle player;
+
+
 	public String facing = "UP";
 	private Boolean moving = false;
 	private int moveCoolDown=0;
