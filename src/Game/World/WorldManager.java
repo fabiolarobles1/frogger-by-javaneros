@@ -176,11 +176,11 @@ public class WorldManager {
 				// move player to the right.
 				if (SpawnedHazards.get(i).GetCollision() != null
 						&& player.getPlayerCollision().intersects(SpawnedHazards.get(i).GetCollision())) {
-					if(player.getX()<576 && (player.facing.equals("RIGHT"))) {
+					if(player.getX()<576 && (player.getFacing().equals("RIGHT"))) {
 						player.setX(player.getX() + 1);
 					}
-					else if(player.getX()<510 && (player.facing.equals("UP") ||player.facing.equals("DOWN")
-							|| player.facing.equals("LEFT"))) {
+					else if(player.getX()<510 && (player.getFacing().equals("UP") ||player.getFacing().equals("DOWN")
+							|| player.getFacing().equals("LEFT"))) {
 						player.setX(player.getX() + 1);
 					}
 				}
@@ -193,11 +193,11 @@ public class WorldManager {
 				// move player to the right.
 				if (SpawnedHazards.get(i).GetCollision() != null
 						&& player.getPlayerCollision().intersects(SpawnedHazards.get(i).GetCollision())) {
-					if(player.getX()>0 && (player.facing.equals("LEFT")||
-							player.facing.equals("UP") ||player.facing.equals("DOWN"))) {
+					if(player.getX()>0 && (player.getFacing().equals("LEFT")||
+							player.getFacing().equals("UP") ||player.getFacing().equals("DOWN"))) {
 						player.setX(player.getX() -1);
 
-					}else if (player.getX()>66 && (player.facing.equals("RIGHT") )) {
+					}else if (player.getX()>66 && (player.getFacing().equals("RIGHT") )) {
 						player.setX(player.getX() -1);
 					}
 				}
@@ -217,8 +217,8 @@ public class WorldManager {
 					SpawnedHazards.get(i).setX(-120);
 				}
 			}else if(SpawnedHazards.get(i) instanceof Turtle) {
-				if(SpawnedHazards.get(i).getX()==-75){
-					SpawnedHazards.get(i).setX(590);
+				if(SpawnedHazards.get(i).getX()==-40){
+					SpawnedHazards.get(i).setX(650);
 				}	
 			}
 		}
@@ -232,16 +232,16 @@ public class WorldManager {
 				if (SpawnedHazards.get(i).GetCollision() != null
 						&& player.getPlayerCollision().intersects(SpawnedHazards.get(i).GetCollision())) {
 
-					if (player.facing.equals("UP")) {
+					if (player.getFacing().equals("UP")) {
 						player.setY(player.getY()+8);
 					}
-					else if (player.facing.equals("DOWN")) {
+					else if (player.getFacing().equals("DOWN")) {
 						player.setY(player.getY()-8);
 					}
-					else if (player.facing.equals("LEFT")) {
+					else if (player.getFacing().equals("LEFT")) {
 						player.setX(player.getX()+8);
 					}
-					else if (player.facing.equals("RIGHT")) {
+					else if (player.getFacing().equals("RIGHT")) {
 						player.setX(player.getX()-8);
 					}
 				}
