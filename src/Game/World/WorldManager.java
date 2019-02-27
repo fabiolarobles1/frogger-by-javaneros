@@ -6,6 +6,7 @@ import Game.Entities.Static.Log;
 import Game.Entities.Static.StaticBase;
 import Game.Entities.Static.Tree;
 import Game.Entities.Static.Turtle;
+import Game.GameStates.State;
 import Main.Handler;
 import UI.UIManager;
 
@@ -79,6 +80,7 @@ public class WorldManager {
 		 */
 		for(int i=0; i<gridHeight+2; i++) {
 			SpawnedAreas.add(PlayerSpawner((-2+i)*64));
+		
 		}
 
 		player.setX((gridWidth/2)*64);
@@ -244,13 +246,18 @@ public class WorldManager {
 						player.setX(player.getX()+8);
 					}
 					else if (player.getFacing().equals("RIGHT")) {
-						player.setX(player.getX()-100);
+						player.setX(player.getX()-8);
 					}
 				}
 			}
 
 		}
 	}
+
+	
+
+		
+	
 
 
 
@@ -283,7 +290,7 @@ public class WorldManager {
 	public int oneortheother = 0;
 
 
-	private BaseArea randomArea(int yPosition) {
+	public BaseArea randomArea(int yPosition) {
 
 		Random rand = new Random();
 		// From the AreasAvailable, get me any random one.
@@ -308,16 +315,17 @@ public class WorldManager {
 			if (oneortheother%2==0) {
 				SpawnHazard(yPosition);
 				oneortheother++;
+				
 			}else {
 				SpawnHazardNoLilly(yPosition);
 				oneortheother++;
-			}		
+			}
+			
 		}else {
 			randomArea = new EmptyArea(handler, yPosition);
 		}
 		return randomArea;
 	}
-
 
 	/*
 	 * Given a yPositionm this method will add a new hazard to the SpawnedHazards ArrayList
