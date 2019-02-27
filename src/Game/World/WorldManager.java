@@ -82,7 +82,7 @@ public class WorldManager {
 		}
 
 		player.setX((gridWidth/2)*64);
-		player.setY((gridHeight-10)*64);
+		player.setY((gridHeight-2)*64);
 
 		// Not used atm.
 		grid = new ID[gridWidth][gridHeight];

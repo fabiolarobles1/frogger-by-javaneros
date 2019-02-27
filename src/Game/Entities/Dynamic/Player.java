@@ -1,6 +1,7 @@
 package Game.Entities.Dynamic;
 
 import Game.Entities.EntityBase;
+import Game.GameStates.State;
 import Main.Handler;
 import Resources.Images;
 
@@ -58,6 +59,9 @@ public class Player extends EntityBase {
 	}
 
 	private void move(){
+		if(player.getY()>770) {
+			State.setState(handler.getGame().gameoverState);
+		}
 		if(moveCoolDown< 25){
 			moveCoolDown++;
 		}
@@ -116,6 +120,8 @@ public class Player extends EntityBase {
 			//When the player get close to the bottom side prevent the player from using this action 
 			if(player.getY()<700) {
 				moving=true;
+			}else {
+				State.setState(handler.getGame().gameoverState);
 			}
 		}else if(handler.getKeyManager().keyJustPressed(KeyEvent.VK_S) && !moving && !facing.equals("DOWN")){
 			//When the player get close to the bottom side prevent the player from using this action 

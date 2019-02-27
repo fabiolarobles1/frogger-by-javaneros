@@ -28,17 +28,14 @@ public class GameState extends State {
 
     @Override
     public void tick() {
-    	player = new Player(handler);
+    	
         handler.getWorld().tick();
         if(handler.getKeyManager().keyJustPressed(KeyEvent.VK_ESCAPE)) {
         	State.setState(handler.getGame().pauseState);
         }
-        if(player.getY()>100) {
-        	State.setState(handler.getGame().gameoverState);
         	
         }
-        System.out.println(player.getY());
-    }
+   
 
     @Override
     public void render(Graphics g) {
