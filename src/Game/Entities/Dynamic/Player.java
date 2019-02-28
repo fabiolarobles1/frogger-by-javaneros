@@ -26,8 +26,9 @@ public class Player extends EntityBase {
 	private String facing = "UP";
 	public Boolean moving = false;
 	private int moveCoolDown=0;
-	private long score = 0;
+	public static long score = 0;
 	private long scoreHolder = 0;
+	public static long finalScore = 0;
 	private int index =0;
 
 	public Player(Handler handler) {
@@ -157,7 +158,9 @@ public class Player extends EntityBase {
 				moving=true;
 				scoreHolder--;
 			}else {
+				
 				State.setState(handler.getGame().gameoverState);
+				
 			}
 		}else if(handler.getKeyManager().keyJustPressed(KeyEvent.VK_S) && !moving && !facing.equals("DOWN")){
 			//When the player get close to the bottom side prevent the player from using this action 
