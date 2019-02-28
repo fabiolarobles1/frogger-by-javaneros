@@ -246,7 +246,7 @@ public class WorldManager {
 							player.moving=false;
 							player.setX((int)playerRec.getX());
 							player.setY((int)playerRec.getY()+(136));
-							player.setScoreHolder(player.getScoreHolder()-1);
+							Player.setScoreHolder(Player.getScoreHolder()-1);
 
 							return;
 						}
@@ -258,7 +258,7 @@ public class WorldManager {
 							player.moving=false;
 							player.setX((int)playerRec.getX());
 							player.setY((int)playerRec.getY()-(72));
-							player.setScoreHolder(player.getScoreHolder()+1);
+							Player.setScoreHolder(Player.getScoreHolder()+1);
 							return;
 						}
 					}
@@ -282,7 +282,7 @@ public class WorldManager {
 							return;
 						}
 					}
-					if(player.getScoreHolder()>Player.getScore()) {
+					if(Player.getScoreHolder()>Player.getScore()) {
 						Player.setScore(Player.getScore()+1);
 					}
 				}
@@ -411,22 +411,22 @@ public class WorldManager {
 			randInt = 64 * rand.nextInt(4);
 			SpawnedHazards.add(new Log(handler, randInt, yPosition));
 			if (choice <=3) {
-				SpawnedHazards.add(new Log(handler, randInt-130-32, yPosition));
+				SpawnedHazards.add(new Log(handler, randInt-130-20, yPosition));
 				if (choice <=2) {	
-					SpawnedHazards.add(new Log(handler, randInt-260-2*32, yPosition));
+					SpawnedHazards.add(new Log(handler, randInt-260-2*20, yPosition));
 					if (choice <=1) {		
-						SpawnedHazards.add(new Log(handler, randInt-390-3*32, yPosition));
+						SpawnedHazards.add(new Log(handler, randInt-390-3*20, yPosition));
 					}
 				}
 			}
 		}else {
 			SpawnedHazards.add(new Turtle(handler, 570, yPosition));
 			if(choice>=6) {
-				SpawnedHazards.add(new Turtle(handler, 570-80-32, yPosition));
+				SpawnedHazards.add(new Turtle(handler, 570-80-20, yPosition));
 				if(choice>=9) {
-					SpawnedHazards.add(new Turtle(handler, 570-160-32*2, yPosition));
+					SpawnedHazards.add(new Turtle(handler, 570-160-20*2, yPosition));
 					if(choice>=10) {
-						SpawnedHazards.add(new Turtle(handler, 570-240-32*3, yPosition));
+						SpawnedHazards.add(new Turtle(handler, 570-240-20*3, yPosition));
 					}
 				}
 			}
@@ -447,13 +447,13 @@ public class WorldManager {
 			SpawnedHazards.add(new Log(handler, randInt, yPosition));
 			if (choice <=4) {
 				//randInt = 64 * rand.nextInt(4);
-				SpawnedHazards.add(new Log(handler, randInt-130-32, yPosition));
+				SpawnedHazards.add(new Log(handler, randInt-130-20, yPosition));
 				if (choice <=3) {
 					//randInt = 64 * rand.nextInt(4);
-					SpawnedHazards.add(new Log(handler, randInt-260-2*32, yPosition));
+					SpawnedHazards.add(new Log(handler, randInt-260-2*20, yPosition));
 					if (choice <=2) {
 						//		randInt = 64 * rand.nextInt(4);
-						SpawnedHazards.add(new Log(handler, randInt-390-3*32, yPosition));
+						SpawnedHazards.add(new Log(handler, randInt-390-3*20, yPosition));
 					}
 				}
 			}
@@ -475,11 +475,11 @@ public class WorldManager {
 		}else {
 			SpawnedHazards.add(new Turtle(handler, 570, yPosition));
 			if(choice>=6) {
-				SpawnedHazards.add(new Turtle(handler, 570-80-32, yPosition));
+				SpawnedHazards.add(new Turtle(handler, 570-80-20, yPosition));
 				if(choice>=8) {
-					SpawnedHazards.add(new Turtle(handler, 570-160-32*2, yPosition));
+					SpawnedHazards.add(new Turtle(handler, 570-160-20*2, yPosition));
 					if(choice>=10) {
-						SpawnedHazards.add(new Turtle(handler, 570-240-32*3, yPosition));
+						SpawnedHazards.add(new Turtle(handler, 570-240-20*3, yPosition));
 					}
 				}
 			}
