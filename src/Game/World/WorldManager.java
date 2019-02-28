@@ -154,7 +154,7 @@ public class WorldManager {
 		HazardMovement();
 		HazardBarrier();
 		LoopHazards();
-		//waterGameOver();
+		waterGameOver();
 
 		player.tick();
 		//make player move the same as the areas
@@ -294,17 +294,30 @@ public class WorldManager {
 	public void waterGameOver(){
 		for (int i = 0; i < SpawnedAreas.size(); i++) {
 			if (SpawnedAreas.get(i) instanceof WaterArea) {
-				if ((player.getPlayerCollision().getY())<=SpawnedAreas.get(i).getYPosition() ) {
-//					if (SpawnedHazards.get(i) instanceof LillyPad){
-//						if (SpawnedHazards.get(i).GetCollision() != null
-//								&& player.getPlayerCollision().intersects(SpawnedHazards.get(i).GetCollision())) {
-//							return;
-//					}
-//					
-//					}else {
-						State.setState(handler.getGame().gameoverState);
-//				}
-					
+				if ((player.getPlayerCollision().getY())==SpawnedAreas.get(i).getYPosition() ) {
+					for (int in = 0; in < SpawnedHazards.size(); in++) 
+						if (SpawnedHazards.get(in) instanceof LillyPad){
+							if (SpawnedHazards.get(in).GetCollision() != null
+									&& player.getPlayerCollision().intersects(SpawnedHazards.get(in).GetCollision())) {
+								return;
+							}
+							if (SpawnedHazards.get(in) instanceof Log){
+								if (SpawnedHazards.get(in).GetCollision() != null
+										&& player.getPlayerCollision().intersects(SpawnedHazards.get(in).GetCollision())) {
+									
+									return;
+								}
+							}
+							if (SpawnedHazards.get(in) instanceof Turtle){
+								if (SpawnedHazards.get(in).GetCollision() != null
+										&& player.getPlayerCollision().intersects(SpawnedHazards.get(in).GetCollision())) {
+									return;
+								}
+							}else {
+								State.setState(handler.getGame().gameoverState);
+							}
+
+						}State.setState(handler.getGame().gameoverState);
 				}
 
 			}
