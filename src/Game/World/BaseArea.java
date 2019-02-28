@@ -35,4 +35,6 @@ public class BaseArea {
     public void setYPosition(int position) {
     	this.yPosition = position;
     }
+
+	
 }

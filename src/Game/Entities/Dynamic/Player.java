@@ -26,7 +26,7 @@ public class Player extends EntityBase {
 	private String facing = "UP";
 	public Boolean moving = false;
 	private int moveCoolDown=0;
-	public static long score = 0;
+	private static long score = 0;
 	private long scoreHolder = 0;
 	public static long finalScore = 0;
 	private int index =0;
@@ -48,7 +48,7 @@ public class Player extends EntityBase {
 		return facing;
 	}
 
-	public long getScore() {
+	public static long getScore() {
 		return score;
 	}
 
@@ -56,12 +56,13 @@ public class Player extends EntityBase {
 		return scoreHolder;
 	}
 
-	public void setScore(long score) {
-		this.score = score;
-	}
 
 	public void setScoreHolder(long scoreHolder) {
 		this.scoreHolder = scoreHolder;
+	}
+
+	public static void setScore(long score) {
+		Player.score = score;
 	}
 
 	public void tick(){

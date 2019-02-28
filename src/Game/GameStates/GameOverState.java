@@ -74,7 +74,7 @@ public class GameOverState extends State {
         uiManager.Render(g);
         g.setFont(new Font("SansSerif",Font.BOLD,50));
 		g.setColor(Color.BLACK);
-		g.drawString(("Score: "+ String.valueOf(Player.score)), 190, 80);
+		g.drawString(("Score: "+ String.valueOf(Player.getScore())), 190, 80);
         
    
     }

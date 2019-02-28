@@ -154,6 +154,7 @@ public class WorldManager {
 		HazardMovement();
 		HazardBarrier();
 		LoopHazards();
+		//waterGameOver();
 
 		player.tick();
 		//make player move the same as the areas
@@ -240,7 +241,7 @@ public class WorldManager {
 					if (player.getFacing().equals("UP")) {
 						Rectangle playerRec= new Rectangle (player.getPlayerCollision());
 						playerRec.setLocation((int)playerRec.getX(),(int) playerRec.getY()-64);
-						
+
 						if (SpawnedHazards.get(i).GetCollision().intersects(playerRec)) {
 							player.moving=false;
 							player.setX((int)playerRec.getX());
@@ -281,10 +282,31 @@ public class WorldManager {
 							return;
 						}
 					}
-					if(player.getScoreHolder()>player.getScore()) {
-						player.setScore(player.getScore()+1);
+					if(player.getScoreHolder()>Player.getScore()) {
+						Player.setScore(Player.getScore()+1);
 					}
 				}
+			}
+
+		}
+	}
+
+	public void waterGameOver(){
+		for (int i = 0; i < SpawnedAreas.size(); i++) {
+			if (SpawnedAreas.get(i) instanceof WaterArea) {
+				if ((player.getPlayerCollision().getY())<=SpawnedAreas.get(i).getYPosition() ) {
+//					if (SpawnedHazards.get(i) instanceof LillyPad){
+//						if (SpawnedHazards.get(i).GetCollision() != null
+//								&& player.getPlayerCollision().intersects(SpawnedHazards.get(i).GetCollision())) {
+//							return;
+//					}
+//					
+//					}else {
+						State.setState(handler.getGame().gameoverState);
+//				}
+					
+				}
+
 			}
 
 		}
