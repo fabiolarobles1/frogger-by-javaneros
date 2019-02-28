@@ -1,6 +1,7 @@
 package Game.Entities.Dynamic;
 
 import Game.Entities.EntityBase;
+import Game.Entities.Static.StaticBase;
 import Game.GameStates.State;
 import Main.Handler;
 import Resources.Images;
@@ -8,6 +9,7 @@ import Resources.Images;
 import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.image.BufferedImage;
+import java.util.ArrayList;
 
 /*
  * The Frog.
@@ -15,23 +17,20 @@ import java.awt.image.BufferedImage;
 public class Player extends EntityBase {
 	private Handler handler;
 
-
+	private ArrayList<StaticBase> SpawnedHazards;
 	private Rectangle player;
-
-
-
 	public String facing = "UP";
-
-	private Boolean moving = false;
+	public Boolean moving = false;
 	private int moveCoolDown=0;
-
+	private int score = 0;
+	public int scoreHolder = 0;
 	private int index =0;
 
 	public Player(Handler handler) {
 		super(handler);
 		this.handler = handler;
 		this.handler.getEntityManager().getEntityList().add(this);
-
+		SpawnedHazards = new ArrayList<>();
 		player = new Rectangle(); 	// see UpdatePlayerRectangle(Graphics g) for its usage.
 	}
 
@@ -48,7 +47,7 @@ public class Player extends EntityBase {
 
 	}
 
-	private void reGrid() {
+	public void reGrid() {
 		if(facing.equals("UP")) {
 			if(this.getX() % 64 >= 64 / 2 ) {
 				this.setX(this.getX() + (64 - this.getX() % 64));
@@ -72,8 +71,13 @@ public class Player extends EntityBase {
 		/////////////////MOVE UP///////////////
 		if(handler.getKeyManager().keyJustPressed(KeyEvent.VK_W) && !moving && facing.equals("UP")){
 			//When the player get close to the top side prevent the player from using this action 
+			
 			if(player.getY()>10) {
 				moving=true;
+				if (moving==true){
+					scoreHolder++;
+				}
+				
 			}
 		}else if(handler.getKeyManager().keyJustPressed(KeyEvent.VK_W) && !moving && !facing.equals("UP")){
 			//When the player get close to the top side prevent the player from using this action 
@@ -122,6 +126,7 @@ public class Player extends EntityBase {
 			//When the player get close to the bottom side prevent the player from using this action 
 			if(player.getY()<700) {
 				moving=true;
+				scoreHolder--;
 			}else {
 				State.setState(handler.getGame().gameoverState);
 			}
@@ -163,6 +168,10 @@ public class Player extends EntityBase {
 				}
 				facing = "RIGHT";
 			}
+		}
+		if(scoreHolder>score) {
+			score++;
+			System.out.println(score);
 		}
 	}
 

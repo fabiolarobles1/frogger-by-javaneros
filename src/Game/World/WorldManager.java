@@ -242,6 +242,10 @@ public class WorldManager {
 						playerRec.setLocation((int)playerRec.getX(),(int) playerRec.getY()-64);
 						if (SpawnedHazards.get(i).GetCollision().intersects(playerRec)) {
 							player.moving=false;
+							player.setX((int)playerRec.getX());
+							player.setY((int)playerRec.getY()+(136));
+							player.scoreHolder--;
+	
 							return;
 						}
 					}
@@ -250,6 +254,9 @@ public class WorldManager {
 						playerRec.setLocation((int)playerRec.getX(),(int) playerRec.getY()+64);
 						if (SpawnedHazards.get(i).GetCollision().intersects(playerRec)) {
 							player.moving=false;
+							player.setX((int)playerRec.getX());
+							player.setY((int)playerRec.getY()-(72));
+							player.scoreHolder++;
 							return;
 						}
 					}
@@ -258,6 +265,8 @@ public class WorldManager {
 						playerRec.setLocation((int)playerRec.getX()-64,(int) playerRec.getY());
 						if (SpawnedHazards.get(i).GetCollision().intersects(playerRec)) {
 							player.moving=false;
+							player.setX((int)playerRec.getX()+72);
+							player.setY((int)playerRec.getY());
 							return;
 						}
 					}
@@ -266,6 +275,8 @@ public class WorldManager {
 						playerRec.setLocation((int)playerRec.getX()+64,(int) playerRec.getY());
 						if (SpawnedHazards.get(i).GetCollision().intersects(playerRec)) {	
 							player.moving=false;
+							player.setX((int)playerRec.getX()-8);
+							player.setY((int)playerRec.getY());
 							return;
 						}
 					}
