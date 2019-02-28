@@ -295,37 +295,36 @@ public class WorldManager {
 		for (int i = 0; i < SpawnedAreas.size(); i++) {
 			if (SpawnedAreas.get(i) instanceof WaterArea) {
 				if ((player.getPlayerCollision().getY())==SpawnedAreas.get(i).getYPosition() ) {
-					for (int in = 0; in < SpawnedHazards.size(); in++) 
+					for (int in = 0; in < SpawnedHazards.size(); in++) {
 						if (SpawnedHazards.get(in) instanceof LillyPad){
 							if (SpawnedHazards.get(in).GetCollision() != null
 									&& player.getPlayerCollision().intersects(SpawnedHazards.get(in).GetCollision())) {
 								return;
 							}
-							if (SpawnedHazards.get(in) instanceof Log){
-								if (SpawnedHazards.get(in).GetCollision() != null
-										&& player.getPlayerCollision().intersects(SpawnedHazards.get(in).GetCollision())) {
-									
-									return;
-								}
+						}
+						else if (SpawnedHazards.get(in) instanceof Log){
+							if (SpawnedHazards.get(in).GetCollision() != null
+									&& player.getPlayerCollision().intersects(SpawnedHazards.get(in).GetCollision())) {
+								return;
 							}
-							if (SpawnedHazards.get(in) instanceof Turtle){
-								if (SpawnedHazards.get(in).GetCollision() != null
-										&& player.getPlayerCollision().intersects(SpawnedHazards.get(in).GetCollision())) {
-									return;
-								}
-							}else {
-								State.setState(handler.getGame().gameoverState);
+						}
+						else if (SpawnedHazards.get(in) instanceof Turtle){
+							if (SpawnedHazards.get(in).GetCollision() != null
+									&& player.getPlayerCollision().intersects(SpawnedHazards.get(in).GetCollision())) {
+								return;
+
 							}
 
-						}State.setState(handler.getGame().gameoverState);
+						}
+					}
+					State.setState(handler.getGame().gameoverState);
 				}
-
 			}
-
 		}
+
 	}
 
-
+	//State.setState(handler.getGame().gameoverState);
 
 
 
@@ -439,7 +438,7 @@ public class WorldManager {
 	private void SpawnHazard(int yPosition) {
 		Random rand = new Random();
 		int randInt;
-		int choice = rand.nextInt(18);
+		int choice = rand.nextInt(25);
 
 		// Chooses between Log , Lillypad or Turtle
 
@@ -461,13 +460,13 @@ public class WorldManager {
 		}else if (choice >11 ) {
 			randInt = 64 * rand.nextInt(9);
 			SpawnedHazards.add(new LillyPad(handler, randInt, yPosition));
-			if (choice>11) {
+			if (choice>13) {
 				randInt = 64 * rand.nextInt(9);
 				SpawnedHazards.add(new LillyPad(handler, randInt, yPosition));
-				if(choice>=13) {
+				if(choice>=15) {
 					randInt = 64 * rand.nextInt(9);
 					SpawnedHazards.add(new LillyPad(handler, randInt, yPosition));
-					if(choice>=15) {
+					if(choice>=20) {
 						randInt = 64 * rand.nextInt(9);
 						SpawnedHazards.add(new LillyPad(handler, randInt, yPosition));
 					}

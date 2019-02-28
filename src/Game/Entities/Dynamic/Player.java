@@ -27,7 +27,7 @@ public class Player extends EntityBase {
 	public Boolean moving = false;
 	private int moveCoolDown=0;
 	private static long score = 0;
-	private long scoreHolder = 0;
+	private static long scoreHolder = 0;
 	public static long finalScore = 0;
 	private int index =0;
 
@@ -57,8 +57,8 @@ public class Player extends EntityBase {
 	}
 
 
-	public void setScoreHolder(long scoreHolder) {
-		this.scoreHolder = scoreHolder;
+	public static void setScoreHolder(long scoreHolder) {
+		Player.scoreHolder = scoreHolder;
 	}
 
 	public static void setScore(long score) {
