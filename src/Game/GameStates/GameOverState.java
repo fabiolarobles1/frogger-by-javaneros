@@ -1,12 +1,15 @@
 package Game.GameStates;
 
 import Main.Handler;
+
 import Resources.Images;
 import UI.ClickListlener;
 import UI.UIImageButton;
 import UI.UIManager;
 
 import java.awt.*;
+
+import Game.Entities.Dynamic.Player;
 
 
 
@@ -20,6 +23,7 @@ public class GameOverState extends State {
 
     public GameOverState(Handler handler) {
         super(handler);
+        
         uiManager = new UIManager(handler);
         handler.getMouseManager().setUimanager(uiManager);
 
@@ -68,6 +72,10 @@ public class GameOverState extends State {
         g.fillRect(0,0,handler.getWidth(),handler.getHeight());
         g.drawImage(Images.gameoverfrogger,0,0,handler.getGame().getWidth(),handler.getGame().getHeight(),null);
         uiManager.Render(g);
+        g.setFont(new Font("SansSerif",Font.BOLD,50));
+		g.setColor(Color.BLACK);
+		g.drawString(("Score: "+ String.valueOf(Player.score)), 190, 80);
+        
    
     }
 }
