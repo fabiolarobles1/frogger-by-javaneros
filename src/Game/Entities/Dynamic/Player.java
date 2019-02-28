@@ -268,9 +268,9 @@ public class Player extends EntityBase {
 
 
 		UpdatePlayerRectangle(g);
-		g.setFont(new Font("SansSerif",Font.BOLD,20));
+		g.setFont(new Font("SansSerif",Font.BOLD,30));
 		g.setColor(Color.BLACK);
-		g.drawString(("Score: "+ String.valueOf(score)), 450, 25);
+		g.drawString(("Score: "+ String.valueOf(score)), 400, 35);
 
 	}
 
