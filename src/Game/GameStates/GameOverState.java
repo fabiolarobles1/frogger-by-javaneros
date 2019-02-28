@@ -35,6 +35,8 @@ public class GameOverState extends State {
             public void onClick() {
                 handler.getMouseManager().setUimanager(null);
                 handler.getGame().reStart();
+                Player.setScore(0);
+				Player.setScoreHolder(0);
                 State.setState(handler.getGame().gameState);
             }
         }));
@@ -42,6 +44,8 @@ public class GameOverState extends State {
 
         uiManager.addObjects(new UIImageButton(33 + 150 * 2,  handler.getGame().getHeight() - 100, 128, 64, Images.BTitle, () -> {
             handler.getMouseManager().setUimanager(null);
+            Player.setScore(0);
+			Player.setScoreHolder(0);
             State.setState(handler.getGame().menuState);
         }));
        
