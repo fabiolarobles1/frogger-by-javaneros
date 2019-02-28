@@ -5,6 +5,7 @@ import Game.Entities.Dynamic.Player;
 import Game.World.WorldManager;
 import Main.Handler;
 import java.awt.*;
+import java.awt.font.TextAttribute;
 
 import com.sun.glass.events.KeyEvent;
 
@@ -39,7 +40,12 @@ public class GameState extends State {
 
     @Override
     public void render(Graphics g) {
+    	
         handler.getWorld().render(g);
+      
+        
+      
+        
 
     }
 

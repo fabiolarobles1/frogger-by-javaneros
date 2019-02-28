@@ -1,15 +1,19 @@
 package Game.Entities.Dynamic;
 
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.Rectangle;
+import java.awt.event.KeyEvent;
+import java.awt.image.BufferedImage;
+import java.util.ArrayList;
+
 import Game.Entities.EntityBase;
 import Game.Entities.Static.StaticBase;
 import Game.GameStates.State;
 import Main.Handler;
 import Resources.Images;
-
-import java.awt.*;
-import java.awt.event.KeyEvent;
-import java.awt.image.BufferedImage;
-import java.util.ArrayList;
 
 /*
  * The Frog.
@@ -19,11 +23,11 @@ public class Player extends EntityBase {
 
 	private ArrayList<StaticBase> SpawnedHazards;
 	private Rectangle player;
-	public String facing = "UP";
+	private String facing = "UP";
 	public Boolean moving = false;
 	private int moveCoolDown=0;
-	private int score = 0;
-	public int scoreHolder = 0;
+	private long score = 0;
+	private long scoreHolder = 0;
 	private int index =0;
 
 	public Player(Handler handler) {
@@ -32,6 +36,31 @@ public class Player extends EntityBase {
 		this.handler.getEntityManager().getEntityList().add(this);
 		SpawnedHazards = new ArrayList<>();
 		player = new Rectangle(); 	// see UpdatePlayerRectangle(Graphics g) for its usage.
+		
+	}
+	
+	public Rectangle getPlayerCollision() {
+		return player;
+	}
+
+	public String getFacing() {
+		return facing;
+	}
+
+	public long getScore() {
+		return score;
+	}
+
+	public long getScoreHolder() {
+		return scoreHolder;
+	}
+
+	public void setScore(long score) {
+		this.score = score;
+	}
+
+	public void setScoreHolder(long scoreHolder) {
+		this.scoreHolder = scoreHolder;
 	}
 
 	public void tick(){
@@ -236,6 +265,9 @@ public class Player extends EntityBase {
 
 
 		UpdatePlayerRectangle(g);
+		g.setFont(new Font("SansSerif",Font.BOLD,20));
+		g.setColor(Color.BLACK);
+		g.drawString(("Score: "+ String.valueOf(score)), 450, 25);
 
 	}
 
@@ -270,12 +302,6 @@ public class Player extends EntityBase {
 		return dest;
 	}
 
-	public Rectangle getPlayerCollision() {
-		return player;
-	}
-
-	public String getFacing() {
-		return facing;
-	}
+	
 
 }

@@ -244,7 +244,7 @@ public class WorldManager {
 							player.moving=false;
 							player.setX((int)playerRec.getX());
 							player.setY((int)playerRec.getY()+(136));
-							player.scoreHolder--;
+							player.setScoreHolder(player.getScoreHolder()-1);
 	
 							return;
 						}
@@ -256,7 +256,7 @@ public class WorldManager {
 							player.moving=false;
 							player.setX((int)playerRec.getX());
 							player.setY((int)playerRec.getY()-(72));
-							player.scoreHolder++;
+							player.setScoreHolder(player.getScoreHolder()+1);
 							return;
 						}
 					}
@@ -279,6 +279,9 @@ public class WorldManager {
 							player.setY((int)playerRec.getY());
 							return;
 						}
+					}
+					if(player.getScoreHolder()>player.getScore()) {
+						player.setScore(player.getScore()+1);
 					}
 				}
 			}
