@@ -52,7 +52,7 @@ public class Player extends EntityBase {
 		return score;
 	}
 
-	public long getScoreHolder() {
+	public static long getScoreHolder() {
 		return scoreHolder;
 	}
 
@@ -91,7 +91,7 @@ public class Player extends EntityBase {
 	}
 
 	private void move(){
-		if(player.getY()>770) {
+		if(player.getY()>handler.getHeight()-player.getHeight()) {
 			State.setState(handler.getGame().gameoverState);
 		}
 		if(moveCoolDown< 25){
@@ -103,7 +103,7 @@ public class Player extends EntityBase {
 		if(handler.getKeyManager().keyJustPressed(KeyEvent.VK_W) && !moving && facing.equals("UP")){
 			//When the player get close to the top side prevent the player from using this action 
 			
-			if(player.getY()>16) {
+			if(player.getY()>player.getHeight()) {
 				moving=true;
 				if (moving==true){
 					scoreHolder++;
