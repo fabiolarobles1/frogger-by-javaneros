@@ -101,7 +101,7 @@ public class Player extends EntityBase {
 		if(handler.getKeyManager().keyJustPressed(KeyEvent.VK_W) && !moving && facing.equals("UP")){
 			//When the player get close to the top side prevent the player from using this action 
 			
-			if(player.getY()>10) {
+			if(player.getY()>16) {
 				moving=true;
 				if (moving==true){
 					scoreHolder++;
@@ -200,7 +200,6 @@ public class Player extends EntityBase {
 		}
 		if(scoreHolder>score) {
 			score++;
-			System.out.println(score);
 		}
 	}
 

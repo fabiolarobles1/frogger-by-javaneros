@@ -176,7 +176,7 @@ public class WorldManager {
 				SpawnedHazards.get(i).setX(SpawnedHazards.get(i).getX() + 1);
 
 				// Verifies the hazards Rectangles aren't null and
-				// If the player Rectangle intersects with the Log or Turtle Rectangle, then
+				// If the player Rectangle intersects with the Log Rectangle, then
 				// move player to the right.
 				if (SpawnedHazards.get(i).GetCollision() != null
 						&& player.getPlayerCollision().intersects(SpawnedHazards.get(i).GetCollision())) {
@@ -193,8 +193,8 @@ public class WorldManager {
 				SpawnedHazards.get(i).setX(SpawnedHazards.get(i).getX() -1);
 
 				// Verifies the hazards Rectangles aren't null and
-				// If the player Rectangle intersects with the Log or Turtle Rectangle, then
-				// move player to the right.
+				// If the player Rectangle intersects with the Turtle Rectangle, then
+				// move player to the left.
 				if (SpawnedHazards.get(i).GetCollision() != null
 						&& player.getPlayerCollision().intersects(SpawnedHazards.get(i).GetCollision())) {
 					if(player.getX()>0 && (player.getFacing().equals("LEFT")||
@@ -240,12 +240,13 @@ public class WorldManager {
 					if (player.getFacing().equals("UP")) {
 						Rectangle playerRec= new Rectangle (player.getPlayerCollision());
 						playerRec.setLocation((int)playerRec.getX(),(int) playerRec.getY()-64);
+						
 						if (SpawnedHazards.get(i).GetCollision().intersects(playerRec)) {
 							player.moving=false;
 							player.setX((int)playerRec.getX());
 							player.setY((int)playerRec.getY()+(136));
 							player.setScoreHolder(player.getScoreHolder()-1);
-	
+
 							return;
 						}
 					}
