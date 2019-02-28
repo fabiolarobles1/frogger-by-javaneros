@@ -80,7 +80,7 @@ public class WorldManager {
 		 */
 		for(int i=0; i<gridHeight+2; i++) {
 			SpawnedAreas.add(PlayerSpawner((-2+i)*64));
-		
+
 		}
 
 		player.setX((gridWidth/2)*64);
@@ -232,21 +232,42 @@ public class WorldManager {
 	private void HazardBarrier() {
 
 		for (int i = 0; i < SpawnedHazards.size(); i++) {
+
 			if (SpawnedHazards.get(i) instanceof Tree)	{ 
 				if (SpawnedHazards.get(i).GetCollision() != null
 						&& player.getPlayerCollision().intersects(SpawnedHazards.get(i).GetCollision())) {
 
 					if (player.getFacing().equals("UP")) {
-						player.setY(player.getY()+8);
+						Rectangle playerRec= new Rectangle (player.getPlayerCollision());
+						playerRec.setLocation((int)playerRec.getX(),(int) playerRec.getY()-64);
+						if (SpawnedHazards.get(i).GetCollision().intersects(playerRec)) {
+							player.moving=false;
+							return;
+						}
 					}
 					else if (player.getFacing().equals("DOWN")) {
-						player.setY(player.getY()-8);
+						Rectangle playerRec= new Rectangle (player.getPlayerCollision());
+						playerRec.setLocation((int)playerRec.getX(),(int) playerRec.getY()+64);
+						if (SpawnedHazards.get(i).GetCollision().intersects(playerRec)) {
+							player.moving=false;
+							return;
+						}
 					}
 					else if (player.getFacing().equals("LEFT")) {
-						player.setX(player.getX()+8);
+						Rectangle playerRec= new Rectangle (player.getPlayerCollision());
+						playerRec.setLocation((int)playerRec.getX()-64,(int) playerRec.getY());
+						if (SpawnedHazards.get(i).GetCollision().intersects(playerRec)) {
+							player.moving=false;
+							return;
+						}
 					}
 					else if (player.getFacing().equals("RIGHT")) {
-						player.setX(player.getX()-8);
+						Rectangle playerRec= new Rectangle (player.getPlayerCollision());
+						playerRec.setLocation((int)playerRec.getX()+64,(int) playerRec.getY());
+						if (SpawnedHazards.get(i).GetCollision().intersects(playerRec)) {	
+							player.moving=false;
+							return;
+						}
 					}
 				}
 			}
@@ -254,10 +275,10 @@ public class WorldManager {
 		}
 	}
 
-	
 
-		
-	
+
+
+
 
 
 
@@ -315,12 +336,12 @@ public class WorldManager {
 			if (oneortheother%2==0) {
 				SpawnHazard(yPosition);
 				oneortheother++;
-				
+
 			}else {
 				SpawnHazardNoLilly(yPosition);
 				oneortheother++;
 			}
-			
+
 		}else {
 			randomArea = new EmptyArea(handler, yPosition);
 		}
