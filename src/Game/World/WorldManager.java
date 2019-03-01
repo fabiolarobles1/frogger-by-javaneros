@@ -408,13 +408,13 @@ public class WorldManager {
 
 		if (choice <=4) {
 			randInt = 64 * rand.nextInt(4);
-			SpawnedHazards.add(new Log(handler, randInt, yPosition));
+			SpawnedHazards.add(new Log(handler, 0, yPosition));
 			if (choice <=4) {
-				SpawnedHazards.add(new Log(handler, randInt-130-10, yPosition));
+				SpawnedHazards.add(new Log(handler, -130, yPosition));
 				if (choice <=2) {	
-					SpawnedHazards.add(new Log(handler, randInt-260-20, yPosition));
+					SpawnedHazards.add(new Log(handler, -130*2, yPosition));
 					if (choice <=1) {		
-						SpawnedHazards.add(new Log(handler, randInt-390-30, yPosition));
+						SpawnedHazards.add(new Log(handler,-130*3, yPosition));
 					}
 				}
 			}
@@ -442,17 +442,13 @@ public class WorldManager {
 		// Chooses between Log , Lillypad or Turtle
 
 		if (choice <=5) {
-			randInt = 64 * rand.nextInt(4);
-			SpawnedHazards.add(new Log(handler, randInt, yPosition));
+			SpawnedHazards.add(new Log(handler, 0, yPosition));
 			if (choice <=4) {
-				//randInt = 64 * rand.nextInt(4);
-				SpawnedHazards.add(new Log(handler, randInt-130-10, yPosition));
+				SpawnedHazards.add(new Log(handler, -130, yPosition));
 				if (choice <=3) {
-					//randInt = 64 * rand.nextInt(4);
-					SpawnedHazards.add(new Log(handler, randInt-260-20, yPosition));
+					SpawnedHazards.add(new Log(handler,-130*2, yPosition));
 					if (choice <=2) {
-						//		randInt = 64 * rand.nextInt(4);
-						SpawnedHazards.add(new Log(handler, randInt-390-30, yPosition));
+						SpawnedHazards.add(new Log(handler,-130*3 , yPosition));
 					}
 				}
 			}
