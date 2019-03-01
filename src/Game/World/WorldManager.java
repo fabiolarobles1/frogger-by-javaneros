@@ -409,7 +409,7 @@ public class WorldManager {
 		if (choice <=4) {
 			randInt = 64 * rand.nextInt(4);
 			SpawnedHazards.add(new Log(handler, randInt, yPosition));
-			if (choice <=3) {
+			if (choice <=4) {
 				SpawnedHazards.add(new Log(handler, randInt-130-10, yPosition));
 				if (choice <=2) {	
 					SpawnedHazards.add(new Log(handler, randInt-260-20, yPosition));
@@ -459,7 +459,7 @@ public class WorldManager {
 		}else if (choice >11 ) {
 			randInt = 64 * rand.nextInt(9);
 			SpawnedHazards.add(new LillyPad(handler, randInt, yPosition));
-			if (choice>13) {
+			if (choice>11) {
 				randInt = 64 * rand.nextInt(9);
 				SpawnedHazards.add(new LillyPad(handler, randInt, yPosition));
 				if(choice>=15) {
